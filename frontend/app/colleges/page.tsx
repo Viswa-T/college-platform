@@ -14,7 +14,7 @@ export default function CollegesPage() {
     setLoading(true);
 
     fetch(
-      `http://localhost:5000/colleges?search=${search}&location=${location}&maxFees=${maxFees}`
+      `https://college-platform-j7qn.onrender.com/colleges?search=${search}&location=${location}&maxFees=${maxFees}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -29,10 +29,8 @@ export default function CollegesPage() {
 
       <h1 className="text-4xl font-bold mb-6">Explore Colleges</h1>
 
-      {/* 🔍 SEARCH + FILTERS */}
       <div className="flex flex-col md:flex-row gap-4 mb-8">
 
-        {/* SEARCH */}
         <input
           type="text"
           placeholder="Search colleges..."
@@ -41,7 +39,6 @@ export default function CollegesPage() {
           className="flex-1 p-3 rounded-lg bg-gray-800 border border-gray-600"
         />
 
-        {/* LOCATION FILTER */}
         <select
           value={location}
           onChange={(e) => setLocation(e.target.value)}
@@ -52,13 +49,10 @@ export default function CollegesPage() {
           <option value="Trichy">Trichy</option>
           <option value="Mumbai">Mumbai</option>
           <option value="Delhi">Delhi</option>
-          <option value="Mumbai">Mumbai</option>
-          <option value="Delhi">Delhi</option>
           <option value="Hyderabad">Hyderabad</option>
           <option value="Pilani">Pilani</option>
         </select>
 
-        {/* FEES FILTER */}
         <input
           type="number"
           placeholder="Max Fees"
@@ -68,15 +62,12 @@ export default function CollegesPage() {
         />
       </div>
 
-      {/* ⏳ LOADING */}
       {loading && <p className="text-gray-400">Loading colleges...</p>}
 
-      {/* ❌ EMPTY STATE */}
       {!loading && colleges.length === 0 && (
         <p className="text-gray-400">No colleges found.</p>
       )}
 
-      {/* 🏫 CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {colleges.map((college) => (
           <Link href={`/colleges/${college.id}`} key={college.id}>
