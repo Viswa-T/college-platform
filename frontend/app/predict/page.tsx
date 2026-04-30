@@ -12,8 +12,8 @@ export default function Predictor() {
     setLoading(true);
 
     const res = await fetch(
-      `http://localhost:5000/predict?rank=${rank}&exam=${exam}`
-    );
+  `https://college-platform-j7qn.onrender.com/predict?rank=${rank}&exam=${exam}`
+);
 
     const data = await res.json();
     setResults(data);
