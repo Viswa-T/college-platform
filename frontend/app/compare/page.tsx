@@ -13,10 +13,10 @@ export default function ComparePage() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/colleges")
-      .then((res) => res.json())
-      .then(setColleges);
-  }, []);
+  fetch("https://college-platform-j7qn.onrender.com/colleges")
+    .then((res) => res.json())
+    .then(setColleges);
+}, []);
 
   const toggleCollege = (college: any) => {
     setSelectedColleges((prev) =>
