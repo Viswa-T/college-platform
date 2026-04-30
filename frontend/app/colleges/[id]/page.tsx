@@ -9,7 +9,7 @@ export default function CollegeDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/colleges/${id}`)
+    fetch(`https://college-platform-j7qn.onrender.com/colleges/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCollege(data);
@@ -29,13 +29,11 @@ export default function CollegeDetail() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white p-10">
 
-      {/* HEADER */}
       <div className="mb-10">
         <h1 className="text-4xl font-bold">{college.name}</h1>
         <p className="text-gray-400 mt-2">📍 {college.location}</p>
       </div>
 
-      {/* OVERVIEW CARD */}
       <div className="grid md:grid-cols-3 gap-6 mb-10">
 
         <div className="bg-gray-900 p-5 rounded-xl border border-gray-700">
@@ -61,7 +59,6 @@ export default function CollegeDetail() {
 
       </div>
 
-      {/* COURSES SECTION */}
       <div className="bg-gray-900 p-6 rounded-xl border border-gray-700 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Courses Offered</h2>
 
@@ -78,7 +75,6 @@ export default function CollegeDetail() {
         )}
       </div>
 
-      {/* PLACEMENTS SECTION */}
       <div className="bg-gray-900 p-6 rounded-xl border border-gray-700 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Placements</h2>
 
@@ -89,10 +85,9 @@ export default function CollegeDetail() {
         </p>
       </div>
 
-      {/* SAVE BUTTON */}
       <button
         onClick={async () => {
-          await fetch("http://localhost:5000/save", {
+          await fetch("https://college-platform-j7qn.onrender.com/save", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
