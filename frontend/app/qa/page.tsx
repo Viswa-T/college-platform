@@ -8,7 +8,7 @@ export default function QA() {
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
 
   const fetchQuestions = async () => {
-    const res = await fetch("http://localhost:5000/questions");
+    const res = await fetch("https://college-platform-j7qn.onrender.com/questions");
     const data = await res.json();
     setQuestions(data);
   };
@@ -20,7 +20,7 @@ export default function QA() {
   const askQuestion = async () => {
     if (!text) return;
 
-    await fetch("http://localhost:5000/ask", {
+    await fetch("https://college-platform-j7qn.onrender.com/ask", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export default function QA() {
   const addAnswer = async (id: number) => {
     if (!answers[id]) return;
 
-    await fetch("http://localhost:5000/answer", {
+    await fetch("https://college-platform-j7qn.onrender.com/answer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,6 @@ export default function QA() {
     <div className="min-h-screen bg-black text-white p-10">
       <h1 className="text-3xl mb-6">💬 Q&A</h1>
 
-      {/* Ask */}
       <input
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -69,19 +68,16 @@ export default function QA() {
         Ask
       </button>
 
-      {/* List */}
       <div className="mt-8 space-y-6">
         {questions.map((q) => (
           <div key={q.id} className="bg-gray-900 p-5 rounded">
 
             <h2 className="mb-3">{q.text}</h2>
 
-            {/* Answers */}
             {q.answers.map((a: string, i: number) => (
               <p key={i} className="text-gray-400">👉 {a}</p>
             ))}
 
-            {/* Answer input */}
             <input
               value={answers[q.id] || ""}
               onChange={(e) =>
